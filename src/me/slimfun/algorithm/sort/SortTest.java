@@ -1,5 +1,7 @@
 package me.slimfun.algorithm.sort;
 
+import java.util.Random;
+
 /**
  * Created by yh on 2016/3/14.
  */
@@ -76,5 +78,19 @@ public class SortTest {
         int temp = nums[p];
         nums[p] = nums[q];
         nums[q] = temp;
+    }
+
+    private static int ramdomPartition(int[] nums, int low, int high) {
+        int i = new Random().nextInt(high - low) + low;
+        exchange(nums, i, high);
+        return partition(nums, low, high);
+    }
+
+    public static void randomQuickSort(int[] nums, int low, int high) {
+        if (low < high) {
+            int q = ramdomPartition(nums,low,high);
+            randomQuickSort(nums, low, q-1);
+            randomQuickSort(nums, q + 1, high);
+        }
     }
 }
