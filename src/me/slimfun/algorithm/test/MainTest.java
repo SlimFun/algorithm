@@ -14,10 +14,12 @@ public class MainTest {
         System.out.println();
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
 //        SortTest.insertSort(nums);
 //        printNums();
-        SortTest.mergeSort(nums,0,nums.length-1);
+//        SortTest.mergeSort(nums,0,nums.length-1);
+//        printNums();
+        SortTest.quickSort(nums, 0, nums.length - 1);
         printNums();
     }
 }

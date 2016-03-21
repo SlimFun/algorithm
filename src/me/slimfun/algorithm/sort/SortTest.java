@@ -52,8 +52,29 @@ public class SortTest {
         }
     }
 
-    public static void partition(int[] nums, int low, int high){
+    private static int partition(int[] nums, int low, int high){
         int x = nums[high];
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (nums[j] < x) {
+                exchange(nums,++i,j);
+            }
+        }
+        exchange(nums, ++i, high);
+        return i;
+    }
 
+    public static void quickSort(int[] nums, int low, int high) {
+        if (low < high) {
+            int q = partition(nums,low,high);
+            quickSort(nums, low, q-1);
+            quickSort(nums, q + 1, high);
+        }
+    }
+
+    private static void exchange(int[] nums, int p, int q) {
+        int temp = nums[p];
+        nums[p] = nums[q];
+        nums[q] = temp;
     }
 }
