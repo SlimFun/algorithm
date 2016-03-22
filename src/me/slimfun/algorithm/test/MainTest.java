@@ -6,7 +6,7 @@ import me.slimfun.algorithm.sort.SortTest;
  * Created by yh on 2016/3/14.
  */
 public class MainTest {
-    private static int[] nums = {5,2,4,6,1,3};
+    private static int[] nums = {5,2,4,6,1,3,0};
 
     private static void printNums(){
         for(int n : nums)
@@ -21,7 +21,12 @@ public class MainTest {
 //        printNums();
 //        SortTest.randomQuickSort(nums, 0, nums.length - 1);
 //        printNums();
-        SortTest.heapSort(nums);
+        //SortTest.heapSort(nums);
+        SortTest.buildMaxHeap(nums, nums.length - 1);
         printNums();
+//        System.out.println(SortTest.heapExtractMax(nums, nums.length - 1));
+//        printNums();
+//        SortTest.heapIncreaseKey(nums, 4, 6);
+//        printNums();
     }
 }

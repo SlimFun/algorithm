@@ -1,5 +1,7 @@
 package me.slimfun.algorithm.sort;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -110,7 +112,7 @@ public class SortTest {
         }
     }
 
-    private static void buildMaxHeap(int[] nums,int heapSize) {
+    public static void buildMaxHeap(int[] nums,int heapSize) {
         for (int i = heapSize / 2; i >= 0; i--) {
             maxHeapify(nums, i,heapSize);
         }
@@ -124,4 +126,41 @@ public class SortTest {
             maxHeapify(nums, 0, heapSize);
         }
     }
+
+    public static int heapMaximum(int[] nums){
+        return nums[0];
+    }
+
+    public static int heapExtractMax(int[] nums, int heapSize) {
+        int max = nums[0];
+        exchange(nums, 0, heapSize--);
+        maxHeapify(nums, 0, heapSize);
+        return max;
+    }
+
+    public static void heapIncreaseKey(int[] nums, int i, int k) {
+        if (k <= nums[i]) {
+            return;
+        }
+        nums[i] = k;
+        while (i >= 1 && nums[parent(i)] < nums[i]) {
+            exchange(nums, i, parent(i));
+            i = parent(i);
+        }
+    }
+
+    public static void maxHeapInsert(int[] nums, int key) {
+        heapIncreaseKey(nums, nums.length - 1, key);
+    }
+
+    private static int parent(int i) {
+        int parent = i / 2;
+        if (i % 2 == 0) {
+            //偶数结点的父节点是i/2-1
+            parent = parent - 1;
+        }
+        return parent;
+    }
+
+
 }
