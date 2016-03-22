@@ -93,4 +93,20 @@ public class SortTest {
             randomQuickSort(nums, q + 1, high);
         }
     }
+
+    public static void maxHeapify(int[] nums,int i) {
+        int l = i * 2;
+        int r = i * 2 + 1;
+        int largest = i;
+        if (l < nums.length-1 && nums[l] > nums[i]) {
+            largest = l;
+        }
+        if (r < nums.length - 1 && nums[r] > nums[largest]) {
+            largest = r;
+        }
+        if (largest != i) {
+            exchange(nums, i, largest);
+            maxHeapify(nums, largest);
+        }
+    }
 }
