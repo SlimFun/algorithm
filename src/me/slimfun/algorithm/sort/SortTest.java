@@ -94,7 +94,7 @@ public class SortTest {
         }
     }
 
-    public static void maxHeapify(int[] nums,int i) {
+    private static void maxHeapify(int[] nums,int i) {
         int l = i * 2;
         int r = i * 2 + 1;
         int largest = i;
@@ -107,6 +107,12 @@ public class SortTest {
         if (largest != i) {
             exchange(nums, i, largest);
             maxHeapify(nums, largest);
+        }
+    }
+
+    private static void buildMaxHeap(int[] nums) {
+        for (int i = nums.length / 2; i >= 0; i--) {
+            maxHeapify(nums, i);
         }
     }
 }
