@@ -94,25 +94,34 @@ public class SortTest {
         }
     }
 
-    private static void maxHeapify(int[] nums,int i) {
-        int l = i * 2;
-        int r = i * 2 + 1;
+    private static void maxHeapify(int[] nums,int i,int heapSize) {
+        int l = i * 2 + 1;
+        int r = (i + 1) * 2;
         int largest = i;
-        if (l < nums.length-1 && nums[l] > nums[i]) {
+        if (l <= heapSize && nums[l] > nums[i]) {
             largest = l;
         }
-        if (r < nums.length - 1 && nums[r] > nums[largest]) {
+        if (r <= heapSize && nums[r] > nums[largest]) {
             largest = r;
         }
         if (largest != i) {
             exchange(nums, i, largest);
-            maxHeapify(nums, largest);
+            maxHeapify(nums, largest,heapSize);
         }
     }
 
-    private static void buildMaxHeap(int[] nums) {
-        for (int i = nums.length / 2; i >= 0; i--) {
-            maxHeapify(nums, i);
+    private static void buildMaxHeap(int[] nums,int heapSize) {
+        for (int i = heapSize / 2; i >= 0; i--) {
+            maxHeapify(nums, i,heapSize);
+        }
+    }
+
+    public static void heapSort(int[] nums) {
+        int heapSize = nums.length-1;
+        buildMaxHeap(nums, heapSize);
+        while (heapSize >= 1) {
+            exchange(nums, 0, heapSize--);
+            maxHeapify(nums, 0, heapSize);
         }
     }
 }

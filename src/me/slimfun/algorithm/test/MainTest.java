@@ -19,7 +19,9 @@ public class MainTest {
 //        printNums();
 //        SortTest.mergeSort(nums,0,nums.length-1);
 //        printNums();
-        SortTest.randomQuickSort(nums, 0, nums.length - 1);
+//        SortTest.randomQuickSort(nums, 0, nums.length - 1);
+//        printNums();
+        SortTest.heapSort(nums);
         printNums();
     }
 }
